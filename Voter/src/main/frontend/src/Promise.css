@@ -1,0 +1,9 @@
+.promiseItem{
+    display: flex;
+    border-bottom: 1px solid;
+    padding: 10px;
+
+}
+.content{
+    width:70%;
+}
