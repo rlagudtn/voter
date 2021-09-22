@@ -11,7 +11,7 @@ function NavMenu (){
                     <Navbar.Brand className="title" href="#home">
                         <img className="logo" src={logo} alt="" />
                         <h1>VOTER</h1>
-                       </Navbar.Brand>
+                    </Navbar.Brand>
 
                     </div>
                     <div>
