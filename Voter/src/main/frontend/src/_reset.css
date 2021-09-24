@@ -7,6 +7,8 @@ body{
 }
 p{
     margin: 0;
+  white-space: nowrap;
+
 }
 
 .navbar{
@@ -17,6 +19,7 @@ p{
     width: 80%;
     margin:auto;
     display: flex;
+    margin-bottom: 20px;
 }
 
 

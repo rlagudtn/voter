@@ -9,12 +9,50 @@
 }
 /* main */
 /* 후보자 리스트 */
+.aboutCandidate{
+  display: flex;
+  
+}
 .candidates{
-  width: 330px;
+  box-sizing: border-box;
+  width: 230px;
+  min-width: 230px;
   padding: 20px;
   margin-right: 10px;
   border: 2px solid;
   border-radius: 4px;
+}
+/* 후보자 레이아웃 */
+.candidateInfos{
+  width: 420px;
+  margin-right: 10px;
+  min-width: 420px;
+
+}
+/* 시각자료부분 */
+.candidateVisuals{
+  width: 420px;
+  min-width: 420px;
+}
+
+@media screen and (max-width:1200px) {
+  .aboutCandidate{
+    flex-direction: column;
+  }
+  .candidateInfos{
+    width: 500px;
+    
+  
+  }
+  /* 시각자료부분 */
+  .candidateVisuals{
+    margin-top: 12px;
+    min-width: none;
+    width: 500px;
+
+  }
+  
+  
 }
 .candidates .title{
   font-weight: 600;
@@ -42,11 +80,7 @@
 
 }
 /* 후보자 관련 글 */
-.candidateInfos{
-  width: 50%;
-  margin-right: 10px;
 
-}
 .candidate{
   display: flex;
   padding: 10px;
@@ -77,12 +111,14 @@
   padding: 5px;
   border-bottom: 1px solid;
   justify-content: space-between;
+  overflow: hidden;
+
 }
 .promisePossiblity{
   display: flex;
   align-items: center;
   margin: 0;
-  background-color: rgba(25, 212, 88, 0.856);;
+  background-color: rgba(24, 145, 226, 0.856);
   margin-left: 5px;
   height: 25px;
   font-size: 15px;
@@ -91,15 +127,20 @@
   color: white;
 }
 
-.news-title{
+.promise-title{
   display: flex;
   justify-content: space-between;
   padding: 5px;
+
   border-bottom: 1px solid;
+  overflow: hidden;
+  text-overflow: ellipsis;    
+  text-align: left;
 }
 .possiblity{
-  background-color: rgba(25, 212, 88, 0.856);
+  background-color: rgba(24, 145, 226, 0.856);
   margin-left: 5px;
+  padding: 2px;
   width: 35px;
   height: 25px;
   border-radius: 10%;
@@ -120,15 +161,21 @@
   padding-bottom: 0;
   border: 1px solid;
   border-radius: 4px;
+
 }
 .news h5{
   padding: 5px;
   border-bottom: 1px solid;
 }
+
+/* p 태그 넘어가는 부분 overflow */
 .news p{
-  display: flex;
+  display: block;
   padding: 5px;
   border-bottom: 1px solid;
+  overflow: hidden;
+  text-overflow: ellipsis;    
+  text-align: left;
 }
 .news button{
   border: none;
@@ -138,9 +185,7 @@
 }
 
 /* 후보자 관련 시각자료 */
-.candidateVisuals{
-  width: 50%;
-}
+
 .wordCloud{
   border: 1px solid;
   border-radius: 5px;
@@ -220,3 +265,4 @@
     transform: rotate(360deg);
   }
 }
+

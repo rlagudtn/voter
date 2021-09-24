@@ -84,7 +84,8 @@ function App() {
   },[])
   useEffect(()=>{
     console.log(previewNews);
-  },previewNews);
+    sendCandidateName(candidateTab);
+  },[candidateTab]);
   return (
     <div className="App">
       <NavMenu className="navbar"></NavMenu>
@@ -94,13 +95,13 @@ function App() {
         <div className="candidates">
         <Nav variant="pills" defaultActiveKey="link-0" className="flex-column" activeKey={candidateTab}>
             <Nav.Item class="nav-item">
-              <Nav.Link className="title" eventKey="disabled" disabled>제 22대 대통령 선거</Nav.Link>
+              <Nav.Link className="title" eventKey="disabled" disabled>제 22대<br/> 대통령 선거</Nav.Link>
             </Nav.Item>
             {
               candidatesInfo.map((candidate,i)=>{
                 return (<Nav.Item>
                 <Nav.Link  className="nav-item"  eventKey={i} onClick={()=>{currentCandidateChange(candidate)
-                  ;changeCandidateTab(i);changeCandidateToggle(false);sendCandidateName(candidateTab);}}>기호 {candidate.id+1}번 {candidate.name}<br/> ({candidate.party})</Nav.Link>
+                  ;changeCandidateTab(i);changeCandidateToggle(false);}}>기호 {candidate.id+1}번 {candidate.name}<br/> ({candidate.party})</Nav.Link>
               </Nav.Item>
               );
               })
@@ -140,18 +141,18 @@ function AboutCandidate(props){
 
         <div className="promiseList">
           <div className="title">
-            <h5>OOO 후보 공약 목록</h5>
+            <h5><b>{currentCandidate.name} 후보 공약 목록</b></h5>
             <div className="promisePossiblity"><div className="spot">이행 가능성 </div></div>
           </div>
-          <div className="news-title">
+          <div className="promise-title">
             <p>1.[국방] 강한 안보, 강한 대한민국 </p>
             <div className="possiblity">80%</div>
           </div>
-          <div className="news-title">
+          <div className="promise-title">
             <p>2.[재정경제]기업에 자유를,서민에게 기회 제공을</p>
             <div className="possiblity">69%</div>
           </div>
-          <div className="news-title">
+          <div className="promise-title">
             <p>3.[정보통신]개천에서 용 나는 교육 인프라 구축</p>
             <div className="possiblity">73%</div>
           </div>
@@ -160,7 +161,7 @@ function AboutCandidate(props){
           <button>더보기</button>
         </div>
         <div className="news">
-          <h5>OOO후보 연관 뉴스</h5>
+          <h5><b>{currentCandidate.name} 후보 연관 뉴스</b></h5>
           {
             props.previewNews.map((news,i)=>{
               return <p>{news.title}</p>
