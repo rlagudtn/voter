@@ -7,11 +7,12 @@
   height: 40vmin;
   pointer-events: none;
 }
-/* main */
+
 /* 후보자 리스트 */
 .aboutCandidate{
   display: flex;
-  
+  width:fit-content;
+  justify-content: center;
 }
 .candidates{
   box-sizing: border-box;
@@ -21,12 +22,13 @@
   margin-right: 10px;
   border: 2px solid;
   border-radius: 4px;
+  height:fit-content;
 }
 /* 후보자 레이아웃 */
 .candidateInfos{
   width: 420px;
   margin-right: 10px;
-  min-width: 420px;
+  min-width: 500px;
 
 }
 /* 시각자료부분 */
@@ -34,26 +36,25 @@
   width: 420px;
   min-width: 420px;
 }
-
-@media screen and (max-width:1200px) {
+@media screen and (max-width:1320px){
+  
   .aboutCandidate{
     flex-direction: column;
+    
   }
   .candidateInfos{
     width: 500px;
-    
-  
   }
-  /* 시각자료부분 */
   .candidateVisuals{
-    margin-top: 12px;
-    min-width: none;
     width: 500px;
-
+    margin-top: 12px;
   }
-  
-  
+  .main{
+    width: fit-content;
+    margin:auto;
+  }
 }
+
 .candidates .title{
   font-weight: 600;
   font-size: 20px;
@@ -74,11 +75,6 @@
   font-weight: 600;
 }
 
-.aboutCandidate{
-  display: flex;
-  width: 100%;
-
-}
 /* 후보자 관련 글 */
 
 .candidate{

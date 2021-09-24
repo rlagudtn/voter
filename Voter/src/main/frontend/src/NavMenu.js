@@ -1,8 +1,11 @@
 
+import { useState } from 'react';
 import {Navbar,Nav,Container,InputGroup,FormControl,Button} from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 import './NavMenu.css';
 import logo from './로고1.png';
 function NavMenu (){
+    let [search,changeSearch]=useState("");
     return (
         <div>
             <Navbar bg="light" variant="light" >
@@ -22,18 +25,28 @@ function NavMenu (){
                     </Nav>
                     </div>
                     <div>
-                    <InputGroup className="mb-0">
-                        <div className="col-xs-6">
+                    <InputGroup className="mb-0 search">
+                        <div >
                             <FormControl
                                 placeholder="검색어를 입력하세요"
                                 aria-label="Recipient's username"
+                                onChange={(e)=>{
+                                    changeSearch(e.target.value);
+                                }}
                             // aria-describedby="basic-addon2"
                             />
                             
                         </div>
-                        <Button variant="outline-secondary" id="button-addon2">
-                            검색
-                        </Button>
+                            <Link to={{
+                                pathname: '/NewsListPage',
+                                state: {
+                                    search:search
+                                }
+                            }}>
+                                <Button variant="outline-secondary" id="button-addon2">
+                                    버튼
+                                </Button>
+                            </Link>
                     </InputGroup>
                     </div>
                     

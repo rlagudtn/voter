@@ -1,0 +1,24 @@
+@import './_reset.css';
+
+.news-item{
+    width: 700px;
+    border: 1px solid;
+    padding: 20px;
+    border-radius: 5px;
+}
+
+.news-item .subInfo{
+    text-align: left;
+}
+.news-item .news-title{
+    margin-top: 10px;
+    text-align: left;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.news-item .content{
+    text-align: left;
+    height: 60px;
+    background-color: burlywood;
+    margin: 0;
+}

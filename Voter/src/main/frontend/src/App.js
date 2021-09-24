@@ -13,6 +13,8 @@ import candidatesData from './Candidate.js';
 import {CSSTransition} from 'react-transition-group';
 import Candidate from './Candidate.js';
 import axios from 'axios';
+import NewsListPage from './NewsListPage';
+import { Route } from 'react-router-dom';
 function App() {
   let [candidatesInfo,changeCandidatesInfo]=useState(candidatesData);
   let [currentCandidate,currentCandidateChange]=useState(candidatesInfo[0]);
@@ -91,36 +93,45 @@ function App() {
       <NavMenu className="navbar"></NavMenu>
 
       {/* Container */}
-      <div className="main">
-        <div className="candidates">
-        <Nav variant="pills" defaultActiveKey="link-0" className="flex-column" activeKey={candidateTab}>
-            <Nav.Item class="nav-item">
-              <Nav.Link className="title" eventKey="disabled" disabled>제 22대<br/> 대통령 선거</Nav.Link>
-            </Nav.Item>
-            {
-              candidatesInfo.map((candidate,i)=>{
-                return (<Nav.Item>
-                <Nav.Link  className="nav-item"  eventKey={i} onClick={()=>{currentCandidateChange(candidate)
-                  ;changeCandidateTab(i);changeCandidateToggle(false);}}>기호 {candidate.id+1}번 {candidate.name}<br/> ({candidate.party})</Nav.Link>
-              </Nav.Item>
-              );
-              })
-            }
-              
-            </Nav>
+      <Route exact path="/">
+        <div className="container">
+          <div className="main">
+            <div className="candidates">
+              <Nav variant="pills" defaultActiveKey="link-0" className="flex-column" activeKey={candidateTab}>
+                <Nav.Item class="nav-item">
+                  <Nav.Link className="title" eventKey="disabled" disabled>제 22대<br /> 대통령 선거</Nav.Link>
+                </Nav.Item>
+                {
+                  candidatesInfo.map((candidate, i) => {
+                    return (<Nav.Item>
+                      <Nav.Link className="nav-item" eventKey={i} onClick={() => {
+                        currentCandidateChange(candidate)
+                          ; changeCandidateTab(i); changeCandidateToggle(false);
+                      }}>기호 {candidate.id + 1}번 {candidate.name}<br /> ({candidate.party})</Nav.Link>
+                    </Nav.Item>
+                    );
+                  })
+                }
+
+              </Nav>
+            </div>
+            <CSSTransition in={candidateToggle} classNames="candidateInfo" timeout={300}>
+              <AboutCandidate candidates={candidatesInfo} currentTab={candidateTab}
+                previewNews={previewNews} changeToggle={changeCandidateToggle} />
+            </CSSTransition>
+
+
+          </div>
         </div>
-          <CSSTransition in={candidateToggle} classNames="candidateInfo" timeout={300}>
-            <AboutCandidate candidates={candidatesInfo} currentTab={candidateTab} 
-            previewNews={previewNews} changeToggle={changeCandidateToggle}/>
-          </CSSTransition>
-          
-        
-      </div>
+      </Route>
       
+      <Route path="/NewsListPage" component={NewsListPage} />
+        
     </div>
   );
 }
 function AboutCandidate(props){
+  console.log(props)
   let currentCandidate=props.candidates[props.currentTab];
   useEffect(()=>{
     props.changeToggle(true);
