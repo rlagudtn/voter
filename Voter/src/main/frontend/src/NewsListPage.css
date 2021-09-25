@@ -5,20 +5,39 @@
     border: 1px solid;
     padding: 20px;
     border-radius: 5px;
+    margin: 5px;
 }
 
 .news-item .subInfo{
     text-align: left;
 }
-.news-item .news-title{
-    margin-top: 10px;
+.subInfo .provider{
+    font-size: 20px;
+}
+
+.news-item .content{
+    display: -webkit-box;
+    word-wrap: break-word;
+    height: 80px;
+    width: 100%;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient:vertical ;
     text-align: left;
+    
+    margin: 0;
+    overflow-y: hidden;
+    text-overflow: ellipsis;
+
+    line-height: 24px;
+    height: 72px;
+}
+.news-item .news-title{
+    display: block;
+    margin-top: 10px;
+    height: fit-content;
+    text-align: left;
+    width: 100%;
     overflow: hidden;
     text-overflow: ellipsis;
-}
-.news-item .content{
-    text-align: left;
-    height: 60px;
-    background-color: burlywood;
-    margin: 0;
+    white-space:nowrap;
 }

@@ -9,28 +9,44 @@ function NewsListPage(props){
     let [keyword,changeKeyword]=useState(props.keyword);
     let [newsList,changeNewsList]=useState([]);
     useEffect(()=>{
-        searchWord(changeNewsList,props.keyword,newsSize);
-        console.log(newsList);
+        
+        changeKeyword(props.keyword);
+        return searchWord(changeNewsList,props.keyword,newsSize);
     },[props.keyword])
     
+    // useEffect(()=>{
+    //     console.log(keyword);
+        
+    //     console.log(newsList);
+    // },[keyword]);
     return (
         <div className="NewsListPage">
-            <h1>Hello</h1>
+            {
+                newsList.map((item)=>{
+                    // return <h1>{item.title}</h1>
+                    
+                    return <NewsPreview news={item}></NewsPreview>
+                })
+            }
             
         </div>
     );
 }
 
 function NewsPreview(props){
+    function parseTime(time){
+        let ret=time.substring(0,10);
+        return ret;
+    }
+    
     return (
         <div className="news-item">
-            <h1>{props}</h1>
             <div className="subInfo">
-                <a><b>언론사</b></a>&nbsp;
-                <span> 2020년 9월 13일</span>
-            </div>   
-            <h4 className="news-title">제목</h4>
-            <p className="content">내용</p>
+                <a className="provider"><b>{props.news.provider}</b></a>&nbsp;&nbsp;
+                <span>{parseTime(props.news.published_at)} </span>
+            </div> 
+            <h4 className="news-title">{props.news.title}</h4>
+            <div className="content">{props.news.hilight}</div>
 
         </div>
         

@@ -10,7 +10,10 @@ p{
   white-space: nowrap;
 
 }
-
+a{
+    text-decoration: none;
+    color: black;
+}
 .navbar{
     padding:30px;
 }
