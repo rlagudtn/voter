@@ -1,11 +1,18 @@
 import { useEffect, useState } from "react";
 import "./NewsListPage.css"
+import { searchWord } from "./SearchWord";
 
 function NewsListPage(props){
-    let [keyword,changeKeyword]=useState(props.location.state.search);
+    
+    let [start,changeStart]=useState(0);
+    let newsSize=10;
+    let [keyword,changeKeyword]=useState(props.keyword);
+    let [newsList,changeNewsList]=useState([]);
     useEffect(()=>{
-        console.log(props);
-    })
+        searchWord(changeNewsList,props.keyword,newsSize);
+        console.log(newsList);
+    },[props.keyword])
+    
     return (
         <div className="NewsListPage">
             <h1>Hello</h1>

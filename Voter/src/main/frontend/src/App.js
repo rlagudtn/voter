@@ -15,82 +15,25 @@ import Candidate from './Candidate.js';
 import axios from 'axios';
 import NewsListPage from './NewsListPage';
 import { Route } from 'react-router-dom';
+import * as Search from "./SearchWord.js";
 function App() {
   let [candidatesInfo,changeCandidatesInfo]=useState(candidatesData);
   let [currentCandidate,currentCandidateChange]=useState(candidatesInfo[0]);
   let [candidateTab,changeCandidateTab]=useState(0);
   let [candidateToggle,changeCandidateToggle]=useState(false);
   let [previewNews,changePreviewNews]=useState([0,0,0,0,0]);
-  function sendCandidateName(candidateId){
-    let candidateName=candidatesInfo[candidateId].name;
-
-    let requestUrl="http://tools.kinds.or.kr:8888/search/news";
-    let datas = {
-      "access_key": "16ca0e32-df44-4e27-84db-45f6604fad18",
-      "argument": {
-          "query": candidateName,
-          "published_at": {
-              "from": "2021-06-08",
-              "until": "2021-09-08"
-          },
-          "provider": [
-            ""
-          ],
-          "category": [
-              "정치>정치일반",
-          ],
-          "category_incident": [
-             ""
-          ],
-          "byline": "",
-          "provider_subject": [
-              "정치"
-          ],
-          "subject_info": [
-              ""
-          ],
-          "subject_info1": [
-              ""
-          ],
-          "subject_info2": [
-              ""
-          ],
-          "subject_info3": [
-              ""
-          ],
-          "subject_info4": [
-              ""
-          ],
-          "sort": {"date": "desc"},
-          "hilight": 200,
-          "return_from": 0,
-          "return_size": 5,
-          "fields": [
-              "byline",
-              "category",
-              "category_incident",
-              "provider_news_id"
-          ]
-      }
-    
-  }
-    axios.post(requestUrl,datas).
-    then(Response=>{
-      changePreviewNews(Response.data.return_object.documents);
-      
-    })
-    
-  }
+  let previewSize=5;
+  let [keyword,changeKeyWord]=useState("");
   useEffect(()=>{
-    sendCandidateName(candidateTab);
+    Search.searchWord(changePreviewNews,currentCandidate.name,previewSize);
+    
   },[])
   useEffect(()=>{
-    console.log(previewNews);
-    sendCandidateName(candidateTab);
+    Search.searchWord(changePreviewNews,currentCandidate.name,previewSize);
   },[candidateTab]);
   return (
     <div className="App">
-      <NavMenu className="navbar"></NavMenu>
+      <NavMenu className="navbar" changeKeyword={changeKeyWord}></NavMenu>
 
       {/* Container */}
       <Route exact path="/">
@@ -125,7 +68,10 @@ function App() {
         </div>
       </Route>
       
-      <Route path="/NewsListPage" component={NewsListPage} />
+      <Route path="/NewsListPage/"  >
+        
+        <NewsListPage keyword={keyword}/>
+      </Route>
         
     </div>
   );

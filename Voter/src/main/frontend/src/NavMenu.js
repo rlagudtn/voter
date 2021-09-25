@@ -4,8 +4,11 @@ import {Navbar,Nav,Container,InputGroup,FormControl,Button} from 'react-bootstra
 import { Link } from 'react-router-dom';
 import './NavMenu.css';
 import logo from './로고1.png';
-function NavMenu (){
+function NavMenu (props){
+    let changeKeyword=props.changeKeyword;
     let [search,changeSearch]=useState("");
+    let [searchToggle,changeSearchToggle]=useState(0);
+    
     return (
         <div>
             <Navbar bg="light" variant="light" >
@@ -39,11 +42,11 @@ function NavMenu (){
                         </div>
                             <Link to={{
                                 pathname: '/NewsListPage',
-                                state: {
-                                    search:search
-                                }
+                                
                             }}>
-                                <Button variant="outline-secondary" id="button-addon2">
+                                <Button variant="outline-secondary" id="button-addon2" onClick={()=>{
+                                    changeKeyword(search);
+                                }}>
                                     버튼
                                 </Button>
                             </Link>
