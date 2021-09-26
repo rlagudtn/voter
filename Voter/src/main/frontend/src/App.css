@@ -36,7 +36,7 @@
   width: 420px;
   min-width: 420px;
 }
-@media screen and (max-width:1320px){
+@media screen and (max-width:1200px){
   
   .aboutCandidate{
     flex-direction: column;

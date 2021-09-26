@@ -14,8 +14,9 @@ import {CSSTransition} from 'react-transition-group';
 import Candidate from './Candidate.js';
 import axios from 'axios';
 import NewsListPage from './NewsListPage';
-import { Route } from 'react-router-dom';
+import { Route,Link } from 'react-router-dom';
 import * as Search from "./SearchWord.js";
+import NewsDetail from './NewsDetail.js';
 function App() {
   let [candidatesInfo,changeCandidatesInfo]=useState(candidatesData);
   let [currentCandidate,currentCandidateChange]=useState(candidatesInfo[0]);
@@ -23,7 +24,10 @@ function App() {
   let [candidateToggle,changeCandidateToggle]=useState(false);
   let [previewNews,changePreviewNews]=useState([0,0,0,0,0]);
   let previewSize=5;
-  let [keyword,changeKeyWord]=useState("");
+  let [keyword,changeKeyword]=useState("");
+  
+  // 뉴스 클릭 index
+  let [newsIndex,changeNewsIndex]=useState(0);
   useEffect(()=>{
     Search.searchWord(changePreviewNews,currentCandidate.name,previewSize);
     
@@ -33,7 +37,7 @@ function App() {
   },[candidateTab]);
   return (
     <div className="App">
-      <NavMenu className="navbar" changeKeyword={changeKeyWord}></NavMenu>
+      <NavMenu className="navbar" changeKeyword={changeKeyword}></NavMenu>
 
       {/* Container */}
       <Route exact path="/">
@@ -59,8 +63,8 @@ function App() {
               </Nav>
             </div>
             <CSSTransition in={candidateToggle} classNames="candidateInfo" timeout={300}>
-              <AboutCandidate candidates={candidatesInfo} currentTab={candidateTab}
-                previewNews={previewNews} changeToggle={changeCandidateToggle} />
+              <AboutCandidate candidates={candidatesInfo} currentTab={candidateTab} changeKeyword={changeKeyword}
+                previewNews={previewNews} changeNewsIndex={changeNewsIndex} changeToggle={changeCandidateToggle} />
             </CSSTransition>
 
 
@@ -69,15 +73,16 @@ function App() {
       </Route>
       
       <Route path="/NewsListPage/"  >
-        
         <NewsListPage keyword={keyword}/>
+      </Route>
+      <Route path="/NewsDetail">
+        <NewsDetail newsId={previewNews[newsIndex].news_id}></NewsDetail>
       </Route>
         
     </div>
   );
 }
 function AboutCandidate(props){
-  console.log(props)
   let currentCandidate=props.candidates[props.currentTab];
   useEffect(()=>{
     props.changeToggle(true);
@@ -121,11 +126,19 @@ function AboutCandidate(props){
           <h5><b>{currentCandidate.name} 후보 연관 뉴스</b></h5>
           {
             props.previewNews.map((news,i)=>{
-              return <p>{news.title}</p>
+              return <Link to="/NewsDetail"><p onClick={()=>{
+                props.changeNewsIndex(i)
+              }
+                }>{news.title}</p></Link>
             })
           }
+          <Link to={{
+            pathname: '/NewsListPage',
+
+          }}>
+            <button onClick={() => { props.changeKeyword(currentCandidate.name) }}>더보기</button>
+          </Link>
           
-          <button>더보기</button>
         </div>
       </div>
       <div className="candidateVisuals">

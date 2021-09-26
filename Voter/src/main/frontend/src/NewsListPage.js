@@ -14,11 +14,7 @@ function NewsListPage(props){
         return searchWord(changeNewsList,props.keyword,newsSize);
     },[props.keyword])
     
-    // useEffect(()=>{
-    //     console.log(keyword);
-        
-    //     console.log(newsList);
-    // },[keyword]);
+ 
     return (
         <div className="NewsListPage">
             {

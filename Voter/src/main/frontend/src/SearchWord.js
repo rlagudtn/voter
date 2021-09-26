@@ -54,7 +54,35 @@ export function searchWord(changeNews,word,size) {
     axios.post(requestUrl, datas).
         then(Response => {
             changeNews(Response.data.return_object.documents);
-
         })
 
+}
+
+export function getNewsDetail(changeDetail,newsId){
+    let requestUrl = "http://tools.kinds.or.kr:8888/search/news";
+    let data={
+        "access_key": "16ca0e32-df44-4e27-84db-45f6604fad18",
+        "argument": {
+
+            "news_ids": [
+                newsId
+            ],
+            "fields": [
+                "content",
+                "byline",
+                "category",
+                "category_incident",
+                "images",
+                "provider_subject",
+                "provider_news_id",
+                "publisher_code"
+            ]
+        }
+    }
+
+    axios.post(requestUrl, data).
+        then(Response => {
+            console.log(Response.data.return_object.documents);
+            changeDetail(Response.data.return_object.documents[0]);
+        })
 }
