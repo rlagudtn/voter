@@ -1,9 +1,8 @@
-
 import { useState } from 'react';
 import {Navbar,Nav,Container,InputGroup,FormControl,Button} from 'react-bootstrap';
 import { Link } from 'react-router-dom';
-import './NavMenu.css';
-import logo from './로고1.png';
+import '../css/NavMenu.css';
+import logo from '../static/로고1.png';
 function NavMenu (props){
     let changeKeyword=props.changeKeyword;
     let [search,changeSearch]=useState("");

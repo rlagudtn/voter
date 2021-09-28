@@ -1,22 +1,20 @@
 import logo from './logo.svg';
 import './App.css';
-import NavMenu from './NavMenu';
+import NavMenu from './js/NavMenu.js';
 import {Nav} from 'react-bootstrap';
 import { useEffect, useState } from 'react';
-import News from './News.js';
-import Promise from './Promise.js';
-import Keyword from './Keyword.js';
-import loading from './person.png';
-import keyword from './워드 클라우드.jpg';
-import age from './연령별.jpg';
-import candidatesData from './Candidate.js';
-import {CSSTransition} from 'react-transition-group';
-import Candidate from './Candidate.js';
-import axios from 'axios';
-import NewsListPage from './NewsListPage';
 import { Route,Link } from 'react-router-dom';
-import * as Search from "./SearchWord.js";
-import NewsDetail from './NewsDetail.js';
+import {CSSTransition} from 'react-transition-group';
+
+
+import candidatesData from './js/Candidate.js';
+import NewsListPage from './js/NewsListPage.js';
+import * as Search from "./js/SearchWord.js";
+import NewsDetail from './js/NewsDetail.js';
+
+import age from './static/연령별.jpg';
+import loading from './static/person.png';
+import keyword from './static/워드 클라우드.jpg';
 function App() {
   let [candidatesInfo,changeCandidatesInfo]=useState(candidatesData);
   let [currentCandidate,currentCandidateChange]=useState(candidatesInfo[0]);

@@ -1,4 +1,4 @@
-import './News.css';
+import '../css/News.css';
 function News(){
     return(
         <div>

@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import "./NewsListPage.css"
+import "../css/NewsListPage.css"
 import { searchWord } from "./SearchWord";
 
 function NewsListPage(props){
