@@ -1,35 +1,41 @@
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
 @import url('../_reset.css');
-.navbar{
-    padding: 10px;
-}
-.navbar-menu.container{
+
+/* .navbar-menu.container{
     width: 1160px;
-}
+} */
 .navbar-menu{
+    display: grid;
+    /* grid-template-areas: "logo menu-list search"; */
+    grid-template-columns: 300px minmax(500px,2fr) minmax(400px,1.5fr);
+    align-items: center;
 
 }
 
-.logo{
+.logo-img{
     width: 130px;
 }
-.navbar-menu .title{
+.navbar-menu .logo{
     display: flex;
     align-items: center;
     font-size: 30px;
     font-family: 'Bebas Neue', cursive;
+    background-color: blanchedalmond;
+    padding: 10px;
 }
-.title h1{
+.logo h1{
     margin-top: 10px;
     font-size: 50px;
+
 }
-.navbar-menu .menu{
-    
+.menu-list{
+    display: flex;
+    background-color: yellow;
     min-width: 500px;
     font-size: 20px;
 }
 .search{
-    min-width: 20px;
+    background-color: cornsilk;
 }
 
 @media screen and (max-width:1320px) {
