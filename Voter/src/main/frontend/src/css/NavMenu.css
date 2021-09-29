@@ -22,7 +22,7 @@
     font-family: 'Bebas Neue', cursive;
     background-color: var(--theme-color);
     padding: 10px;
-    box-shadow: 1px 1px 5px black;
+    box-shadow: 1px -1px 5px black;
     
 }
 .logo img{
@@ -36,23 +36,41 @@
     font-weight: 550;
 }
 .menu-list{
+    justify-self: center;
+}
+.menu-items{
     display: flex;
-    justify-content: center;
-
-    min-width: 500px;
+    justify-content: space-around;
+    margin:0;
+    min-width: 600px;
     font-size: 24px;
     font-family: var(--menu-font);
     /* font-family: 'Do Hyeon', sans-serif; */
     color:white;
 }
-.menu-list .menu-item{
-    margin-right: 1.5em;
-}
+
 .search{
     justify-content: center;
+    display: flex;
+    
 }
+
 .searchInput{
-    width: 250px;
+    width: 70%;
+    min-width: 10px;
+
+    padding: 0;
+    border: none;
+    border-radius: 4px;
+    border-top-right-radius: 0;border-bottom-right-radius: 0;
+    line-height: 38px;
+}
+.search button{
+    color: white;
+    border: 1px solid white;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+
 }
 @media screen and (max-width:1320px) {
     .search{
