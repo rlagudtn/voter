@@ -1,3 +1,18 @@
+:root{
+    /* font */
+    --logo-font:  'Titillium Web', sans-serif;
+    --box-title-font:'Jua', sans-serif;
+    --menu-font:'Jua', sans-serif;
+    --list-title-font:'Jua', sans-serif;
+    --list-item-font:'Jua', sans-serif;
+    --normal-font:'Gothic A1', sans-serif;
+
+    /* color */
+    --theme-color:#2E3E58;
+    --theme-color-light:#596885;
+    --main-background-color:grey;
+}
+
 *{
     box-sizing: border-box;
 }
@@ -8,6 +23,8 @@ body{
 p{
     margin: 0;
   white-space: nowrap;
+  font-family: var(--normal-font);
+  font-weight: 700;
 
 }
 a{

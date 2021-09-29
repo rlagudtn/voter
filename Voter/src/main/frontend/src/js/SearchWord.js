@@ -5,7 +5,9 @@ export function searchWord(changeNews,word,size) {
     let datas = {
         "access_key": "16ca0e32-df44-4e27-84db-45f6604fad18",
         "argument": {
-            "query": word,
+            "query": {
+                "title":word
+            },
             "published_at": {
                 "from": "2021-06-08",
                 "until": "2021-09-08"

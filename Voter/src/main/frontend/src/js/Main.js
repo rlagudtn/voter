@@ -35,9 +35,7 @@ function Main(props) {
         <div className="main">
             <div className="candidates">
                 <Nav variant="pills" defaultActiveKey="link-0" className="flex-column" activeKey={candidateTab}>
-                    <Nav.Item class="nav-item">
-                        <Nav.Link className="title" eventKey="disabled" disabled>제 22대<br /> 대통령 선거</Nav.Link>
-                    </Nav.Item>
+                    <h5 className="title">제 22대<br /> 대통령 선거</h5>
                     {
                         candidatesInfo.map((candidate, i) => {
                             return (<Nav.Item>
@@ -57,9 +55,10 @@ function Main(props) {
                 </CSSTransition> */}
             {/* 후보자 정보 */}
             <div className="candidate box-item">
+
                 <img src={loading} alt="" />
                 <div className="info">
-                    <h4>기호 {currentCandidate.id + 1}번 {currentCandidate.name}({currentCandidate.age})</h4>
+                    <h5>기호 {currentCandidate.id + 1}번 {currentCandidate.name}({currentCandidate.age})</h5>
                     <p>소속: {currentCandidate.party}</p>
                     <p>이력: 전 OO정당 당대표</p>
                     <p>재산: {currentCandidate.property}</p>
@@ -68,10 +67,13 @@ function Main(props) {
             </div>
             {/* 공약 리스트 */}
             <div className="promiseList box-item">
-                <div className="title">
-                    <h5><b>{currentCandidate.name} 후보 공약 목록</b></h5>
-                    <div className="promisePossiblity"><div className="spot">이행 가능성 </div></div>
+                <div className="box-title">
+                    <div className="title">
+                        <h5>{currentCandidate.name} 후보 공약 목록</h5>
+                        <div className="promisePossiblity">이행 가능성 </div>
+                    </div>
                 </div>
+
                 <div className="promise-title">
                     <p>1.[국방] 강한 안보, 강한 대한민국 </p>
                     <div className="possiblity">80%</div>
@@ -90,7 +92,10 @@ function Main(props) {
             </div>
             {/* 연관 뉴스 */}
             <div className="news  box-item">
-                <h5><b>{currentCandidate.name} 후보 연관 뉴스</b></h5>
+                <div className="box-title">
+                    <h5>{currentCandidate.name} 후보 연관 뉴스</h5>
+                </div>
+
                 {
                     props.previewNews.map((news, i) => {
                         return <Link to="/NewsDetail"><p onClick={() => {
@@ -109,12 +114,17 @@ function Main(props) {
             </div>
             {/* 키워드 크라우드 */}
             <div className="wordCloud  box-item">
-                <h5>키워드분석</h5>
+                <div className="box-title">
+                    <h5>키워드분석</h5>
+
+                </div>
                 <img src={keyword} alt="" />
             </div>
             {/* 연령대별 선호도 */}
             <div className="age  box-item">
-                <h5>성별 및 연령대별 선호도</h5>
+                <div className="box-title">
+
+                    <h5>성별 및 연령대별 선호도</h5></div>
                 <img src={age} alt="" />
 
             </div>
