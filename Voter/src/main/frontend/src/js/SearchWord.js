@@ -56,6 +56,9 @@ export function searchWord(changeNews,word,size) {
     axios.post(requestUrl, datas).
         then(Response => {
             changeNews(Response.data.return_object.documents);
+            console.log("post");
+        }).catch(function(error){
+            console.log(error.response);
         })
 
 }

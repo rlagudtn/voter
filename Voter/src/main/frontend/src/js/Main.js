@@ -35,7 +35,7 @@ function Main(props) {
         <div className="main">
             <div className="candidates">
                 <Nav variant="pills" defaultActiveKey="link-0" className="flex-column" activeKey={candidateTab}>
-                    <h5 className="title">제 22대<br /> 대통령 선거</h5>
+                    <h5 className="title">제 19대<br /> 대통령 선거</h5>
                     {
                         candidatesInfo.map((candidate, i) => {
                             return (<Nav.Item>

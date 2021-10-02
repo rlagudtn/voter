@@ -30,24 +30,32 @@
 }
 .logo h1{
     margin-top: 10px;
-    font-size: 30px;
+    font-size: 24px;
     color: white;
     font-family: var(--logo-font);
-    font-weight: 550;
+    font-weight:700;
 }
 .menu-list{
     justify-self: center;
+    
 }
+
+
 .menu-items{
     display: flex;
+    
     justify-content: space-around;
+    align-items: center;
     margin:0;
+    margin-left: 10px;margin-right: 10px;
     min-width: 600px;
-    font-size: 24px;
+    font-size: 20px;
     font-family: var(--menu-font);
+    font-weight: 600;
     /* font-family: 'Do Hyeon', sans-serif; */
     color:white;
 }
+.updown { width: 2px; height: 30px; background-color: white;}
 
 .search{
     justify-content: center;

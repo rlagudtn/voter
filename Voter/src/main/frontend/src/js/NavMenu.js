@@ -21,9 +21,11 @@ function NavMenu(props) {
             </Link>
             <div className="menu-list">
                 <div className="menu-items">
-                    <li className="menu-item ">대선</li>
-                    <li className="menu-item">국회의원</li>
-                    <li className="menu-item">지방자치단체장 및 지방의회</li>
+                    <li className="menu-item ">대통령 선거</li>
+                    <li class="updown"></li>
+                    <li className="menu-item">국회의원 선거</li>
+                    <li class="updown"></li>
+                    <li className="menu-item">지방 선거</li>
                 </div>
                 
             </div>

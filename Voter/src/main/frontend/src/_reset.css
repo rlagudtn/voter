@@ -1,10 +1,10 @@
 :root{
     /* font */
-    --logo-font:  'Titillium Web', sans-serif;
-    --box-title-font:'Jua', sans-serif;
-    --menu-font:'Jua', sans-serif;
-    --list-title-font:'Jua', sans-serif;
-    --list-item-font:'Jua', sans-serif;
+    --logo-font:  'Hahmlet', serif;
+    --box-title-font:'Hahmlet', serif;
+    --menu-font:'Hahmlet', serif;
+    --list-title-font:'Hahmlet', serif;
+    --list-item-font:'Hahmlet', serif;
     --normal-font:'Gothic A1', sans-serif;
 
     /* color */
