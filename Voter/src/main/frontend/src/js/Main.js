@@ -54,80 +54,103 @@ function Main(props) {
                     
                 </CSSTransition> */}
             {/* 후보자 정보 */}
-            <div className="candidate box-item">
+            <div className="contents">
+                <div className="candidateInfo">
+                    <div className="candidate box-item">
 
-                <img src={loading} alt="" />
-                <div className="info">
-                    <h5>기호 {currentCandidate.id + 1}번 {currentCandidate.name}({currentCandidate.age})</h5>
-                    <p>소속: {currentCandidate.party}</p>
-                    <p>이력: 전 OO정당 당대표</p>
-                    <p>재산: {currentCandidate.property}</p>
-                    <p>공약 이행률: {currentCandidate.fulfillmentRate}%</p>
-                </div>
-            </div>
-            {/* 공약 리스트 */}
-            <div className="promiseList box-item">
-                <div className="box-title">
-                    <div className="title">
-                        <h5>{currentCandidate.name} 후보 공약 목록</h5>
-                        <div className="promisePossiblity">이행 가능성 </div>
+                        <img src={loading} alt="" />
+                        <div className="info">
+                            <h5>기호 {currentCandidate.id + 1}번 {currentCandidate.name}({currentCandidate.age})</h5>
+                            <p>소속: {currentCandidate.party}</p>
+                            <p>이력: 전 OO정당 당대표</p>
+                            <p>재산: {currentCandidate.property}</p>
+                            <p>공약 이행률: {currentCandidate.fulfillmentRate}%</p>
+                        </div>
+                    </div>
+                    {/* 공약 리스트 */}
+
+                    <div className="promiseList box-item">
+                        <div className="box-title">
+                                <h5  className="title">후보 공약 목록</h5>
+                                <div className="promisePossiblity">이행 가능성 </div>
+                        </div>
+
+                        <div className="promise-title">
+                            <div className="promise-content">
+                            <p>1.[국방] 강한 안보, 강한 대한민국 </p>
+
+                            </div>
+                            <div className="possiblity">80%</div>
+                        </div>
+                        <div className="promise-title">
+                        <div className="promise-content">
+
+                            <p>2.[재정경제]기업에 자유를,서민에게 기회 제공을</p>
+                        </div>
+
+                            <div className="possiblity">69%</div>
+                        </div>
+                        <div className="promise-title">
+                        <div className="promise-content">
+
+                            <p>3.[정보통신]개천에서 용 나는 교육 인프라 구축</p>
+                        </div>
+
+                            <div className="possiblity">73%</div>
+                        </div>
+
+
+                        <button>더보기</button>
                     </div>
                 </div>
 
-                <div className="promise-title">
-                    <p>1.[국방] 강한 안보, 강한 대한민국 </p>
-                    <div className="possiblity">80%</div>
-                </div>
-                <div className="promise-title">
-                    <p>2.[재정경제]기업에 자유를,서민에게 기회 제공을</p>
-                    <div className="possiblity">69%</div>
-                </div>
-                <div className="promise-title">
-                    <p>3.[정보통신]개천에서 용 나는 교육 인프라 구축</p>
-                    <div className="possiblity">73%</div>
-                </div>
 
+                {/* 연관 뉴스 */}
+                <div className="news-content">
+                    <div className="news box-item">
+                        <div className="box-title">
+                            <h5>{currentCandidate.name} 후보 연관 뉴스</h5>
+                        </div>
 
-                <button>더보기</button>
-            </div>
-            {/* 연관 뉴스 */}
-            <div className="news  box-item">
-                <div className="box-title">
-                    <h5>{currentCandidate.name} 후보 연관 뉴스</h5>
-                </div>
-
-                {
-                    props.previewNews.map((news, i) => {
-                        return <Link to="/NewsDetail"><p onClick={() => {
-                            props.changeNewsIndex(i)
+                        {
+                            props.previewNews.map((news, i) => {
+                                return <Link to="/NewsDetail"><p onClick={() => {
+                                    props.changeNewsIndex(i)
+                                }
+                                }>{news.title}</p></Link>
+                            })
                         }
-                        }>{news.title}</p></Link>
-                    })
-                }
-                <Link to={{
-                    pathname: '/NewsListPage',
+                        <Link to={{
+                            pathname: '/NewsListPage',
 
-                }}>
-                    <button onClick={() => { props.changeKeyword(currentCandidate.name) }}>더보기</button>
-                </Link>
+                        }}>
+                            <button onClick={() => { props.changeKeyword(currentCandidate.name) }}>더보기</button>
+                        </Link>
 
-            </div>
-            {/* 키워드 크라우드 */}
-            <div className="wordCloud  box-item">
-                <div className="box-title">
-                    <h5>키워드분석</h5>
-
+                    </div>
                 </div>
-                <img src={keyword} alt="" />
-            </div>
-            {/* 연령대별 선호도 */}
-            <div className="age  box-item">
-                <div className="box-title">
+                
+                <div className="candidateVisual">
+                    {/* 키워드 크라우드 */}
+                    <div className="wordCloud  box-item">
+                        <div className="box-title">
+                            <h5>키워드분석</h5>
 
-                    <h5>성별 및 연령대별 선호도</h5></div>
-                <img src={age} alt="" />
+                        </div>
+                        <img src={keyword} alt="" />
+                    </div>
+                    {/* 연령대별 선호도 */}
+                    <div className="age  box-item">
+                        <div className="box-title">
 
+                            <h5>성별 및 연령대별 선호도</h5></div>
+                        <img src={age} alt="" />
+
+                    </div>
+                </div>
             </div>
+            
+            
         </div>
     );
 }

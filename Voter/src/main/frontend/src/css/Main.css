@@ -1,19 +1,15 @@
 @import url('../_reset.css');
 /* Grid css */
 .main{
-    display: grid;
-    grid-auto-rows: repeat(3, auto);
-    grid-template-columns: 230px minmax(475px,1fr) minmax(475px,1fr);
+  display: flex;
     background-color: #ECECEC;
-    padding-right: 30px;
-    gap: 30px;
 }
 .box-item{
     box-shadow: 5px 5px 5px  gray;
-    align-self:start;
     background-color: white;
     border-radius: 4px;
     color: var(--theme-color);
+    margin-bottom: 20px;
 }
 .box-title{
     background-color: var(--theme-color);
@@ -23,22 +19,29 @@
 }
 .box-item h5{
     font-family: var(--box-title-font);
-    font-size: 24px;
+    font-size: 20px;
     color: white;
-    font-weight: 200;
+    font-weight: 500;
     margin: 0;
 
 }
 
+
 /* 후보자 리스트 */
 
   .candidates{
-    grid-row: 1/4;
-    grid-column: 1/2;
-    box-sizing: border-box;
+    width: 230px;
+    min-width: 230px;
+    height: max-content;
     padding: 20px;
     box-shadow: 1px 1px 5px black;
     background-color: white;
+    
+  }
+  .contents{
+    padding: 20px;
+    display: flex;
+    min-width: 950px;
     
   }
   .candidates .title{
@@ -49,49 +52,57 @@
       font-weight: 600;
       color: var(--theme-color);
     }
+  /* 2/3 */
+
+    .candidateInfo{
+      display: flex;
+      flex-direction: column;
+      width: 30%;
+      min-width: 300px;
+      padding-right: 20px;
+
+    }
   /* 후보자 정보 */
   .candidate{
-    display: flex;
-    grid-row: 1/2;
-    grid-column: 2/3;
     padding:30px;
-    margin-top: 50px;
   }
   .candidate h5{
       background-color: transparent;
       color: black;
   }
   /* 공약 리스트 */
-  .promiseList{
-    align-self: flex-start;
-    grid-row: 3/4;
-    grid-column: 2/3;
-  }
-  /* 연관뉴스 */
-  .news{
-    grid-row: 2/3;
-    grid-column: 2/3;
   
+  /* 연관뉴스 */
+  .news-content{
+    width: 45%;
+    min-width: 350px;
+    padding-right: 20px;
+  }
+  .news{
+    
+
+  
+  }
+  .candidateVisual{
+    width: 30%;
+    min-width: 300px;
+    display:flex;
+    flex-direction: column;
   }
   /* 키워드 클라우드 */
   .wordCloud{
-    margin-top: 50px;
-    grid-row: 1/2;
-    grid-column: 3/4;
   }
   .age{
-    grid-row: 2/3;
-    grid-column: 3/4;
   }
   
   
-  .candidateInfo-enter{
+  /* .candidateInfo-enter{
     opacity: 0;
   }
   .candidateInfo-enter-active{
     opacity: 1;
     transition: all 300ms;
-  }
+  } */
   .nav-item{
     border-bottom: 1px solid;
     color: black;
@@ -112,29 +123,23 @@
   .candidate .info{
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
     padding-top: 20px;
   }
   
-  .promiseList .title{
-    width: 100%;
+  .promiseList .box-title{
     display: flex;
     justify-content: space-between;
-    overflow: hidden;
-    
-  
+    padding-left: 10px;padding-right: 10px;
   }
-  .title h5{
+  .promiseList .title{
       margin:auto;
   }
   .promisePossiblity{
     display: flex;
     align-items: center;
-    height: 25px;
-    padding-right: 10px;
-    color: var(--theme-color-light);
+    width: fit-content;
     font-family: var(--menu-font);
-
+    font-size: 14px;
     color: white;
   }
   
@@ -143,14 +148,19 @@
     justify-content: space-between;
     padding: 7px;
   
+    
+  }
+  .promise-content{
+    width: 80%;
+  }
+  .promise-content p{
     overflow: hidden;
     text-overflow: ellipsis;    
     text-align: left;
     font-family: var(--menu-font);
   }
   .possiblity{
-    margin-left: 5px;
-    width:50px;
+    width:40px;
     text-align: center;
     height: 25px;
     border-radius: 4px;
