@@ -19,7 +19,7 @@ function Main(props) {
     let [candidateToggle, changeCandidateToggle] = useState(false);
     let previewSize = 3;
 
-    
+
     // 뉴스 클릭 index
     useEffect(() => {
         Search.searchWord(changePreviewNews, currentCandidate.name, previewSize);
@@ -31,140 +31,128 @@ function Main(props) {
     }, [candidateTab]);
 
     useEffect(() => {
-
-    })
+        changeCandidateToggle(true);
+    },[candidateTab])
     return (
+
         <div className="main">
+
             <div className="candidates">
-                <LeftSidebar changeContent={currentCandidateChange} changeTab={changeCandidateTab} 
-                changeToggle={changeCandidateToggle} items={candidatesInfo}>
+                <LeftSidebar changeContent={currentCandidateChange} changeTab={changeCandidateTab}
+                    changeToggle={changeCandidateToggle} items={candidatesInfo}>
 
                 </LeftSidebar>
-                {/* <Nav variant="pills" defaultActiveKey="link-0" className="flex-column" activeKey={candidateTab}>
-                    <h5 className="title">제 19대<br /> 대통령 선거</h5>
-                    {
-                        candidatesInfo.map((candidate, i) => {
-                            return (<Nav.Item variant='secondary'>
-                                <Nav.Link className="nav-item" eventKey={i} onClick={() => {
-                                    currentCandidateChange(candidate)
-                                        ; changeCandidateTab(i); changeCandidateToggle(false);
-                                }}>기호 {candidate.id + 1}번 {candidate.name}<br /> ({candidate.party})</Nav.Link>
-                            </Nav.Item>
-                            );
-                        })
-                    }
-
-                </Nav> */}
             </div>
-            {/* <CSSTransition in={candidateToggle} classNames="candidateInfo" timeout={300}>
-                    
-                </CSSTransition> */}
+
             {/* 후보자 정보 */}
-            <div className="contents">
-                <div className="candidateInfo">
-                    <div className="candidate box-item">
-                    <div className="box-title">
-                            <h5>NEWS</h5>
+            <CSSTransition in={candidateToggle} classNames="candidateInfo" timeout={300}>
+
+                <div className="contents">
+                    <div className="candidateInfo">
+                        <div className="candidate box-item">
+                            <div className="box-title">
+                                <h5>후보자 정보</h5>
+                            </div>
+                            <img src={loading} alt="" />
+                            <div className="info">
+                                <h5>기호 {currentCandidate.id + 1}번 {currentCandidate.name}({currentCandidate.age})</h5>
+                                <p>소속: {currentCandidate.party}</p>
+                                <p>이력: 전 OO정당 당대표</p>
+                                <p>재산: {currentCandidate.property}</p>
+                                <p>공약 이행률: {currentCandidate.fulfillmentRate}%</p>
+                            </div>
                         </div>
-                        <img src={loading} alt="" />
-                        <div className="info">
-                            <h5>기호 {currentCandidate.id + 1}번 {currentCandidate.name}({currentCandidate.age})</h5>
-                            <p>소속: {currentCandidate.party}</p>
-                            <p>이력: 전 OO정당 당대표</p>
-                            <p>재산: {currentCandidate.property}</p>
-                            <p>공약 이행률: {currentCandidate.fulfillmentRate}%</p>
+                        {/* 공약 리스트 */}
+
+                        <div className="promiseList box-item">
+                            <div className="box-title">
+                                <h5 className="title">후보 공약 목록</h5>
+                                <div className="promisePossiblity">이행 가능성 </div>
+                            </div>
+
+                            <div className="promise-title">
+                                <div className="promise-content">
+                                    <p>1.[국방] 강한 안보, 강한 대한민국 </p>
+
+                                </div>
+                                <div className="possiblity">80%</div>
+                            </div>
+                            <div className="promise-title">
+                                <div className="promise-content">
+
+                                    <p>2.[재정경제]기업에 자유를,서민에게 기회 제공을</p>
+                                </div>
+
+                                <div className="possiblity">69%</div>
+                            </div>
+                            <div className="promise-title">
+                                <div className="promise-content">
+
+                                    <p>3.[정보통신]개천에서 용 나는 교육 인프라 구축</p>
+                                </div>
+
+                                <div className="possiblity">73%</div>
+                            </div>
+
+
+                            <button>더보기</button>
                         </div>
                     </div>
-                    {/* 공약 리스트 */}
 
-                    <div className="promiseList box-item">
-                        <div className="box-title">
-                                <h5  className="title">후보 공약 목록</h5>
-                                <div className="promisePossiblity">이행 가능성 </div>
+
+                    {/* 연관 뉴스 */}
+                    <div className="news-content">
+                        <div className="news box-item">
+                            <div className="box-title">
+                                <h5>NEWS</h5>
+                            </div>
+
+                            {
+                                props.previewNews.map((news, i) => {
+                                    return (
+                                        <Link to="/NewsDetail">
+                                            <div className="news-item" onClick={() => {
+                                                props.changeNewsIndex(i)
+                                            }
+                                            }>
+                                                <img src="https://www.bigkinds.or.kr/resources/images/02100311/2021/10/02/02100311.20211002165632001.01.jpg" alt="" />
+                                                <p>{news.title}</p>
+                                            </div>
+                                        </Link>);
+                                })
+                            }
+                            <Link to={{
+                                pathname: '/NewsListPage',
+
+                            }}>
+                                <button onClick={() => { props.changeKeyword(currentCandidate.name) }}>더보기</button>
+                            </Link>
+
                         </div>
+                    </div>
 
-                        <div className="promise-title">
-                            <div className="promise-content">
-                            <p>1.[국방] 강한 안보, 강한 대한민국 </p>
+                    <div className="candidateVisual">
+                        {/* 키워드 크라우드 */}
+                        <div className="wordCloud  box-item">
+                            <div className="box-title">
+                                <h5>키워드분석</h5>
 
                             </div>
-                            <div className="possiblity">80%</div>
+                            <img src={keyword} alt="" />
                         </div>
-                        <div className="promise-title">
-                        <div className="promise-content">
+                        {/* 연령대별 선호도 */}
+                        <div className="age  box-item">
+                            <div className="box-title">
 
-                            <p>2.[재정경제]기업에 자유를,서민에게 기회 제공을</p>
+                                <h5>성별 및 연령대별 선호도</h5></div>
+                            <img src={age} alt="" />
+
                         </div>
-
-                            <div className="possiblity">69%</div>
-                        </div>
-                        <div className="promise-title">
-                        <div className="promise-content">
-
-                            <p>3.[정보통신]개천에서 용 나는 교육 인프라 구축</p>
-                        </div>
-
-                            <div className="possiblity">73%</div>
-                        </div>
-
-
-                        <button>더보기</button>
                     </div>
                 </div>
+            </CSSTransition>
 
 
-                {/* 연관 뉴스 */}
-                <div className="news-content">
-                    <div className="news box-item">
-                        <div className="box-title">
-                            <h5>NEWS</h5>
-                        </div>
-
-                        {
-                            props.previewNews.map((news, i) => {
-                                return (
-                                    <Link to="/NewsDetail">
-                                        <div className="news-item" onClick={() => {
-                                            props.changeNewsIndex(i)
-                                        }
-                                        }>
-                                            <img src="https://www.bigkinds.or.kr/resources/images/02100311/2021/10/02/02100311.20211002165632001.01.jpg" alt="" />
-                                            <p>{news.title}</p>
-                                        </div>
-                                    </Link>);
-                            })
-                        }
-                        <Link to={{
-                            pathname: '/NewsListPage',
-
-                        }}>
-                            <button onClick={() => { props.changeKeyword(currentCandidate.name) }}>더보기</button>
-                        </Link>
-
-                    </div>
-                </div>
-                
-                <div className="candidateVisual">
-                    {/* 키워드 크라우드 */}
-                    <div className="wordCloud  box-item">
-                        <div className="box-title">
-                            <h5>키워드분석</h5>
-
-                        </div>
-                        <img src={keyword} alt="" />
-                    </div>
-                    {/* 연령대별 선호도 */}
-                    <div className="age  box-item">
-                        <div className="box-title">
-
-                            <h5>성별 및 연령대별 선호도</h5></div>
-                        <img src={age} alt="" />
-
-                    </div>
-                </div>
-            </div>
-            
-            
         </div>
     );
 }

@@ -19,6 +19,7 @@ function App() {
 
       {/* Container */}
       <Route exact path="/">
+        
         <Main keyword={keyword} changeKeyword={changeKeyword}
       previewNews={previewNews} changePreviewNews={changePreviewNews}
        newsIndex={newsIndex} changeNewsIndex={changeNewsIndex}></Main>
