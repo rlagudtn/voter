@@ -11,7 +11,11 @@
     --theme-color:#2E3E58;
     --theme-color-light:#596885;
     --main-background-color:grey;
-}
+
+    /* size */
+    --box-padding:3%;
+    --box-bottom-padding:10%;
+}   
 
 *{
     box-sizing: border-box;

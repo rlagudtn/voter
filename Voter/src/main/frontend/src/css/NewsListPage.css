@@ -1,6 +1,6 @@
 @import '../_reset.css';
 
-.news-item{
+.NewsListPage .news-item{
     width: 700px;
     border: 1px solid;
     padding: 20px;
@@ -8,14 +8,14 @@
     margin: 5px;
 }
 
-.news-item .subInfo{
+.NewsListPage .news-item .subInfo{
     text-align: left;
 }
 .subInfo .provider{
     font-size: 20px;
 }
 
-.news-item .content{
+.NewsListPage .news-item .content{
     display: -webkit-box;
     word-wrap: break-word;
     height: 80px;
@@ -31,7 +31,7 @@
     line-height: 24px;
     height: 72px;
 }
-.news-item .news-title{
+.NewsListPage.news-item .news-title{
     display: block;
     margin-top: 10px;
     height: fit-content;

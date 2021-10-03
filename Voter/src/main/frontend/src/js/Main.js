@@ -9,6 +9,7 @@ import * as Search from "./SearchWord.js";
 import age from '../static/연령별.jpg';
 import loading from '../static/person.png';
 import keyword from '../static/워드 클라우드.jpg';
+import LeftSidebar from './LeftSidebar';
 
 function Main(props) {
     let changePreviewNews = props.changePreviewNews;
@@ -16,8 +17,9 @@ function Main(props) {
     let [currentCandidate, currentCandidateChange] = useState(candidatesInfo[0]);
     let [candidateTab, changeCandidateTab] = useState(0);
     let [candidateToggle, changeCandidateToggle] = useState(false);
-    let previewSize = 5;
+    let previewSize = 3;
 
+    
     // 뉴스 클릭 index
     useEffect(() => {
         Search.searchWord(changePreviewNews, currentCandidate.name, previewSize);
@@ -34,11 +36,15 @@ function Main(props) {
     return (
         <div className="main">
             <div className="candidates">
-                <Nav variant="pills" defaultActiveKey="link-0" className="flex-column" activeKey={candidateTab}>
+                <LeftSidebar changeContent={currentCandidateChange} changeTab={changeCandidateTab} 
+                changeToggle={changeCandidateToggle} items={candidatesInfo}>
+
+                </LeftSidebar>
+                {/* <Nav variant="pills" defaultActiveKey="link-0" className="flex-column" activeKey={candidateTab}>
                     <h5 className="title">제 19대<br /> 대통령 선거</h5>
                     {
                         candidatesInfo.map((candidate, i) => {
-                            return (<Nav.Item>
+                            return (<Nav.Item variant='secondary'>
                                 <Nav.Link className="nav-item" eventKey={i} onClick={() => {
                                     currentCandidateChange(candidate)
                                         ; changeCandidateTab(i); changeCandidateToggle(false);
@@ -48,7 +54,7 @@ function Main(props) {
                         })
                     }
 
-                </Nav>
+                </Nav> */}
             </div>
             {/* <CSSTransition in={candidateToggle} classNames="candidateInfo" timeout={300}>
                     
@@ -57,7 +63,9 @@ function Main(props) {
             <div className="contents">
                 <div className="candidateInfo">
                     <div className="candidate box-item">
-
+                    <div className="box-title">
+                            <h5>NEWS</h5>
+                        </div>
                         <img src={loading} alt="" />
                         <div className="info">
                             <h5>기호 {currentCandidate.id + 1}번 {currentCandidate.name}({currentCandidate.age})</h5>
@@ -109,15 +117,21 @@ function Main(props) {
                 <div className="news-content">
                     <div className="news box-item">
                         <div className="box-title">
-                            <h5>{currentCandidate.name} 후보 연관 뉴스</h5>
+                            <h5>NEWS</h5>
                         </div>
 
                         {
                             props.previewNews.map((news, i) => {
-                                return <Link to="/NewsDetail"><p onClick={() => {
-                                    props.changeNewsIndex(i)
-                                }
-                                }>{news.title}</p></Link>
+                                return (
+                                    <Link to="/NewsDetail">
+                                        <div className="news-item" onClick={() => {
+                                            props.changeNewsIndex(i)
+                                        }
+                                        }>
+                                            <img src="https://www.bigkinds.or.kr/resources/images/02100311/2021/10/02/02100311.20211002165632001.01.jpg" alt="" />
+                                            <p>{news.title}</p>
+                                        </div>
+                                    </Link>);
                             })
                         }
                         <Link to={{

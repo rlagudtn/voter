@@ -22,9 +22,9 @@ function NavMenu(props) {
             <div className="menu-list">
                 <div className="menu-items">
                     <li className="menu-item ">대통령 선거</li>
-                    <li class="updown"></li>
+                    <li className="updown"></li>
                     <li className="menu-item">국회의원 선거</li>
-                    <li class="updown"></li>
+                    <li className="updown"></li>
                     <li className="menu-item">지방 선거</li>
                 </div>
                 

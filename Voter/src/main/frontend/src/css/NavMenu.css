@@ -6,6 +6,7 @@
 } */
 .navbar-menu{
     display: grid;
+    min-width: 1180px;
     /* grid-template-areas: "logo menu-list search"; */
     grid-template-columns: 230px minmax(550px,2fr) minmax(400px,1.5fr);
     align-items: center;
@@ -53,7 +54,11 @@
     font-weight: 600;
     color:white;
 }
-.updown { width: 2px; height: 30px; background-color: white;}
+.updown 
+{ width: 2px; 
+    height: 30px; background-color: 
+    white;
+}
 
 .search{
     justify-content: center;

@@ -9,7 +9,7 @@
     background-color: white;
     border-radius: 4px;
     color: var(--theme-color);
-    margin-bottom: 20px;
+    margin-bottom: var(--box-bottom-padding);
 }
 .box-title{
     background-color: var(--theme-color);
@@ -29,22 +29,22 @@
 
 /* 후보자 리스트 */
 
-  .candidates{
+  /* .candidates{
     width: 230px;
     min-width: 230px;
     height: max-content;
     padding: 20px;
-    box-shadow: 1px 1px 5px black;
+    box-shadow: 1px 1px 5px var(--theme-color);
     background-color: white;
     
-  }
+  } */
   .contents{
-    padding: 20px;
     display: flex;
     min-width: 950px;
+    width: 100%;
     
   }
-  .candidates .title{
+  /* .candidates .title{
       font-family: var(--list-title-font);
       font-size: 24px;
       border-bottom: 1px solid;
@@ -52,6 +52,9 @@
       font-weight: 600;
       color: var(--theme-color);
     }
+  .sidebar-item .active{
+    background-color: red;
+  }     */
   /* 2/3 */
 
     .candidateInfo{
@@ -59,35 +62,51 @@
       flex-direction: column;
       width: 30%;
       min-width: 300px;
-      padding-right: 20px;
+      padding:var(--box-padding);
+      padding-right:0;
 
     }
   /* 후보자 정보 */
   .candidate{
-    padding:30px;
   }
-  .candidate h5{
-      background-color: transparent;
-      color: black;
+  .candidateInfo .info h5{
+    color: black;
   }
   /* 공약 리스트 */
   
   /* 연관뉴스 */
   .news-content{
-    width: 45%;
-    min-width: 350px;
-    padding-right: 20px;
-  }
-  .news{
-    
-
-  
-  }
-  .candidateVisual{
     width: 30%;
     min-width: 300px;
+    padding:var(--box-padding);
+  }
+
+  /* 뉴스 item */
+  .news .news-item{
+    display: flex;
+    flex-direction: column;
+    margin: 30px;
+    border-bottom: 1px solid ;
+  }
+  .news .news-item img{
+    width: fit-content;
+    height: 150px;
+    margin: auto;
+    box-shadow: 2px 2px 5px black;
+  }
+  .news .news-item p{
+    padding-bottom: 20px;
+    padding-top: 20px;
+    text-align: left;
+    font-weight: 700;
+  }
+  .candidateVisual{
+    width: 40%;
+    min-width: 390px;
     display:flex;
     flex-direction: column;
+    padding:var(--box-padding);
+    padding-left: 0;
   }
   /* 키워드 클라우드 */
   .wordCloud{
@@ -112,7 +131,9 @@
     font-size:16px;
     font-weight: 600;
   }
-  
+  .nav-item:visited{
+    background-color: red;
+  }
   /* 후보자 관련 글 */
   
 

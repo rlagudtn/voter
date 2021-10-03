@@ -18,10 +18,8 @@ function NewsListPage(props){
     return (
         <div className="NewsListPage">
             {
-                newsList.map((item)=>{
-                    // return <h1>{item.title}</h1>
-                    
-                    return <NewsPreview news={item}></NewsPreview>
+                newsList.map((item,i)=>{
+                    return <NewsPreview key={i} news={item}></NewsPreview>
                 })
             }
             

@@ -1,0 +1,33 @@
+@import url(../_reset.css);
+.LeftSidebar{
+    width: 230px;
+    min-width: 230px;
+    height: max-content;
+    padding: 20px;
+    box-shadow: 1px 1px 5px var(--theme-color);
+    background-color: white;
+    font-family: var(--menu-font);
+}
+.LeftSidebar .title{
+    font-family: var(--list-title-font);
+    font-size: 24px;
+    border-bottom: 1px solid;
+    padding: 20px;
+    font-weight: 600;
+    color: var(--theme-color);
+  }
+
+.LeftSidebar .sidebar-item{
+    font-size: 20px;
+    font-weight: 600;
+    padding: 5px;
+    border-bottom: 1px solid var(--theme-color-light);
+}
+.candidateName{
+    padding:20px;
+}
+.sidebar-item .active{
+    background-color: var(--theme-color-light);
+    color: white;
+    border-radius: 4px;
+  }   
