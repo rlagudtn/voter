@@ -31,7 +31,6 @@ function App() {
       <Route path="/NewsDetail">
         <NewsDetail newsId={previewNews[newsIndex].news_id}></NewsDetail>
       </Route>
-        
     </div>
   );
 }

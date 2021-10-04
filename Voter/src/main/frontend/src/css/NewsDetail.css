@@ -1,0 +1,9 @@
+@import url(../_reset.css);
+
+.NewsDetail{
+    position: absolute;
+
+    background-color: silver;
+    width: 30%;
+    margin:auto;
+}

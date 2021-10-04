@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import "../css/NewsListPage.css"
+import NewsDetail from "./NewsDetail";
 import { searchWord } from "./SearchWord";
 
 function NewsListPage(props){
@@ -8,12 +9,28 @@ function NewsListPage(props){
     let newsSize=10;
     let [keyword,changeKeyword]=useState(props.keyword);
     let [newsList,changeNewsList]=useState([]);
+    let [currentNewsId,setCurrentNewsId]=useState(0);
     useEffect(()=>{
         
         changeKeyword(props.keyword);
         return searchWord(changeNewsList,props.keyword,newsSize);
     },[props.keyword])
     
+    // 뉴스 모달창 관련
+    let[isShowing,setIsShowing]=useState(false);
+    function openModal(newsId){
+        setIsShowing(true);
+        setCurrentNewsId(newsId);
+    }
+    //뉴스 모달창 닫기
+    useEffect(()=>{
+        if(isShowing){
+            const notiTimer=setTimeout(()=>{
+                setIsShowing(false);
+            },10000);
+            return ()=>clearTimeout(notiTimer);
+        }
+    },[isShowing]);
  
     return (
         <div className="NewsListPage">
@@ -21,14 +38,20 @@ function NewsListPage(props){
             <h3 className="search-title">
                 {props.keyword}<br/>뉴스 검색 결과
             </h3>
+            
             {
                 newsList.map((item,i)=>{
-                    return <NewsPreview key={i} news={item}></NewsPreview>
+                    return (
+                        <div onClick={()=>{openModal(item.news_id);console.log(item.title);console.log(item.news_id)}}>
+                            <NewsPreview key={i} news={item} ></NewsPreview>
+                        </div>
+                    )
                 })
             }
             
             </div>
-            
+            <div>{isShowing && <NewsDetail newsId={currentNewsId} ></NewsDetail>}</div>
+
             
         </div>
     );
