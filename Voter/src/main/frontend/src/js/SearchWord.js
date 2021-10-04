@@ -1,6 +1,6 @@
 import axios from "axios";
 
-export function searchWord(changeNews,word,size) {
+export function searchWord(changeNews,word,start,end,size=10000) {
     let requestUrl = "http://tools.kinds.or.kr:8888/search/news";
     let datas = {
         "access_key": "16ca0e32-df44-4e27-84db-45f6604fad18",
@@ -9,8 +9,8 @@ export function searchWord(changeNews,word,size) {
                 "title":word
             },
             "published_at": {
-                "from": "2021-06-08",
-                "until": "2021-09-08"
+                "from": start,
+                "until": end
             },
             "provider": [
                 ""
@@ -58,7 +58,7 @@ export function searchWord(changeNews,word,size) {
             changeNews(Response.data.return_object.documents);
             console.log("post");
         }).catch(function(error){
-            console.log(error.response);
+            console.log("error");
         })
 
 }

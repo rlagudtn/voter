@@ -10,7 +10,8 @@ import age from '../static/연령별.jpg';
 import loading from '../static/person.png';
 import keyword from '../static/워드 클라우드.jpg';
 import LeftSidebar from './LeftSidebar';
-
+import {getCurrent,setDuration} from "./Parse";
+import NewsDetail from "./NewsDetail.js";
 function Main(props) {
     let changePreviewNews = props.changePreviewNews;
     let [candidatesInfo, changeCandidatesInfo] = useState(candidatesData);
@@ -18,15 +19,25 @@ function Main(props) {
     let [candidateTab, changeCandidateTab] = useState(0);
     let [candidateToggle, changeCandidateToggle] = useState(false);
     let previewSize = 3;
+    let start,end;
+    
+    //modal
+    let [isShowing,setIsShowing]=useState(false);
+    let [currentNews,setCurrentNews]=useState({});
 
-
+    function openNewsTab(newsId){
+        setIsShowing(true);
+        Search.getNewsDetail(setCurrentNews,newsId);
+    }
     // 뉴스 클릭 index
     useEffect(() => {
-        Search.searchWord(changePreviewNews, currentCandidate.name, previewSize);
-
+        end=getCurrent();
+        start=setDuration(6);// 6개월간의 뉴스 
+        Search.searchWord(changePreviewNews, currentCandidate.name,start,end, previewSize);
     }, [])
     useEffect(() => {
-        Search.searchWord(changePreviewNews, currentCandidate.name, previewSize);
+        Search.searchWord(changePreviewNews, currentCandidate.name,start,end, previewSize);
+        console.log(props.previewNews,currentCandidate.name);
         currentCandidate = candidatesInfo[candidateTab];
     }, [candidateTab]);
 
@@ -110,15 +121,16 @@ function Main(props) {
                             {
                                 props.previewNews.map((news, i) => {
                                     return (
-                                        <Link to="/NewsDetail">
+                                        
                                             <div className="news-item" onClick={() => {
-                                                props.changeNewsIndex(i)
+                                                props.changeNewsIndex(i);
+                                                openNewsTab(news.news_id);
                                             }
                                             }>
                                                 <img src="https://www.bigkinds.or.kr/resources/images/02100311/2021/10/02/02100311.20211002165632001.01.jpg" alt="" />
                                                 <p>{news.title}</p>
                                             </div>
-                                        </Link>);
+                                        );
                                 })
                             }
                             <Link to={{
@@ -151,6 +163,8 @@ function Main(props) {
                     </div>
                 </div>
             </CSSTransition>
+            <div>{isShowing && <NewsDetail newsId={currentNews.news_id} setIsShowing={setIsShowing} ></NewsDetail>}</div>
+
 
 
         </div>

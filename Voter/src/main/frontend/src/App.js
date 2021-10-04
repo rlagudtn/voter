@@ -28,9 +28,9 @@ function App() {
       <Route path="/NewsListPage/"  >
         <NewsListPage keyword={keyword}/>
       </Route>
-      <Route path="/NewsDetail">
+      {/* <Route path="/NewsDetail">
         <NewsDetail newsId={previewNews[newsIndex].news_id}></NewsDetail>
-      </Route>
+      </Route> */}
     </div>
   );
 }

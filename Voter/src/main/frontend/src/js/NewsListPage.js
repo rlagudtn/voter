@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import "../css/NewsListPage.css"
 import NewsDetail from "./NewsDetail";
 import { searchWord } from "./SearchWord";
-
+import {getCurrent, parseTime, setDuration} from "./Parse.js"
 function NewsListPage(props){
     
     let [start,changeStart]=useState(0);
@@ -11,9 +11,10 @@ function NewsListPage(props){
     let [newsList,changeNewsList]=useState([]);
     let [currentNewsId,setCurrentNewsId]=useState(0);
     useEffect(()=>{
-        
+        let end=getCurrent();
+        let start=setDuration(6);// 6개월간의 뉴스 
         changeKeyword(props.keyword);
-        return searchWord(changeNewsList,props.keyword,newsSize);
+        return searchWord(changeNewsList,props.keyword,start,end);
     },[props.keyword])
     
     // 뉴스 모달창 관련
@@ -23,14 +24,7 @@ function NewsListPage(props){
         setCurrentNewsId(newsId);
     }
     //뉴스 모달창 닫기
-    useEffect(()=>{
-        if(isShowing){
-            const notiTimer=setTimeout(()=>{
-                setIsShowing(false);
-            },10000);
-            return ()=>clearTimeout(notiTimer);
-        }
-    },[isShowing]);
+    
  
     return (
         <div className="NewsListPage">
@@ -42,7 +36,7 @@ function NewsListPage(props){
             {
                 newsList.map((item,i)=>{
                     return (
-                        <div onClick={()=>{openModal(item.news_id);console.log(item.title);console.log(item.news_id)}}>
+                        <div onClick={()=>{openModal(item.news_id)}}>
                             <NewsPreview key={i} news={item} ></NewsPreview>
                         </div>
                     )
@@ -50,18 +44,15 @@ function NewsListPage(props){
             }
             
             </div>
-            <div>{isShowing && <NewsDetail newsId={currentNewsId} ></NewsDetail>}</div>
+            <div>{isShowing && <NewsDetail newsId={currentNewsId} setIsShowing={setIsShowing} ></NewsDetail>}</div>
 
-            
+            {/* <NewsDetail newsId={currentNewsId} ></NewsDetail> */}
         </div>
     );
 }
 
 function NewsPreview(props){
-    function parseTime(time){
-        let ret=time.substring(0,10);
-        return ret;
-    }
+    
     
     return (
         <div className="news-item">
